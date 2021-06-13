@@ -34,7 +34,8 @@ router.post('/addproject',async (req,res)=>{
       demoUrl: req.body.demo_url,
       repoUrl: req.body.repo_url,
       imgUrls:imageUrls,
-      documentationUrl: req.body.documentation_url
+      documentationUrl: req.body.documentation_url,
+      projectDescription: req.body.project_description
     })
 
     const result = await project.save()
@@ -80,7 +81,8 @@ router.patch('/update/:project_id', (req,res)=>{
         imgUrls: req.body.img_urls,
         demoUrl: req.body.demo_url,
         repoUrl: req.body.repo_url,
-        documentationUrl: req.body.documentation_url},
+        documentationUrl: req.body.documentation_url,
+        projectDescription: req.body.project_description},
         { safe: true, upsert: true })
     .then((result)=>{
       res.json(result)
